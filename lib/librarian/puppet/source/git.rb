@@ -87,6 +87,7 @@ module Librarian
         end
 
         def cache_in_vendor(tmp_path)
+          environment.vendor!
           Dir.chdir(tmp_path.to_s) do
             %x{git archive #{sha} | gzip > #{vendor_tgz}}
           end
